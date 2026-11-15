@@ -1,27 +1,35 @@
-
 package com.vale.vic.automation.service
 
 import android.accessibilityservice.AccessibilityService
+import android.content.Intent
 import android.view.accessibility.AccessibilityEvent
-import com.vale.vic.automation.VicServiceState
 
 class VicAccessibilityService : AccessibilityService() {
 
     override fun onServiceConnected() {
         super.onServiceConnected()
-        VicServiceState.setConnected(true)
+        VicServiceState.connected = true
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        // Event handling will be implemented in a later stage.
+        if (event == null) return
+        if (event.eventType != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) return
+        val pkg = event.packageName?.toString() ?: return
+        if (pkg != packageName) {
+            VicServiceState.lastExternalPackage = pkg
+        }
     }
 
     override fun onInterrupt() {
-        // Called when Android interrupts the service.
     }
 
-    override fun onUnbind(intent: android.content.Intent?): Boolean {
-        VicServiceState.setConnected(false)
+    override fun onUnbind(intent: Intent?): Boolean {
+        VicServiceState.connected = false
         return super.onUnbind(intent)
+    }
+
+    override fun onDestroy() {
+        VicServiceState.connected = false
+        super.onDestroy()
     }
 }
