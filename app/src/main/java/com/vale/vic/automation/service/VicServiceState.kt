@@ -1,5 +1,4 @@
-
-package com.vale.vic.automation
+package com.vale.vic.automation.servicd
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
