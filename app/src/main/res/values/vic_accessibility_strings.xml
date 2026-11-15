@@ -1,0 +1,7 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="vic_accessibility_service_description">
+        Allows VIC to perform approved accessibility actions when the user enables the service.
+    </string>
+</resources>
