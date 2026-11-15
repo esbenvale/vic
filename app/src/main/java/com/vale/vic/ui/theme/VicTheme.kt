@@ -1,3 +1,4 @@
+
 package com.vale.vic.ui.theme
 
 import androidx.compose.material3.MaterialTheme
@@ -5,20 +6,28 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-private val VicColors = darkColorScheme(
-    primary = Color(0xFF36A9FF),
-    onPrimary = Color(0xFF001D32),
-    secondary = Color(0xFF83CFFF),
-    background = Color(0xFF080B12),
-    onBackground = Color(0xFFF4F7FB),
-    surface = Color(0xFF111827),
-    onSurface = Color(0xFFF4F7FB)
+/** Public VALE colour palette used across all VIC screens. */
+object VicColors {
+    val Black = Color(0xFF080A0C)
+    val Charcoal = Color(0xFF0F1318)
+    val Panel = Color(0xFF171C23)
+    val Cyan = Color(0xFF00E5FF)
+    val Blue = Color(0xFF2F7BFF)
+    val TextPrimary = Color(0xFFE6EDF3)
+    val TextMuted = Color(0xFF8B98A5)
+}
+
+private val VicDarkScheme = darkColorScheme(
+    primary = VicColors.Cyan,
+    secondary = VicColors.Blue,
+    background = VicColors.Charcoal,
+    surface = VicColors.Panel,
+    onPrimary = VicColors.Black,
+    onBackground = VicColors.TextPrimary,
+    onSurface = VicColors.TextPrimary
 )
 
 @Composable
 fun VicTheme(content: @Composable () -> Unit) {
-    MaterialTheme(
-        colorScheme = VicColors,
-        content = content
-    )
+    MaterialTheme(colorScheme = VicDarkScheme, content = content)
 }
