@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="vic_accessibility_service_description">
-        Allows VIC to perform approved accessibility actions when the user enables the service.
-    </string>
+    <string name="vic_accessibility_label">VIC Automation</string>
+    <string name="vic_accessibility_description">Lets VIC read the on-screen interface and, only while you run a task, tap, scroll and type for you so you can watch it work. You can switch this off at any time.</string>
 </resources>
