@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vic_black">#080B12</color>
+    <color name="vic_surface">#111827</color>
+    <color name="vic_blue">#36A9FF</color>
+    <color name="vic_white">#F4F7FB</color>
+</resources>
