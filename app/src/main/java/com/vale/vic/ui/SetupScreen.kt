@@ -21,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vale.vic.BuildConfig
 import com.vale.vic.automation.permissions.PermissionRegistry
 import com.vale.vic.automation.service.VicServiceState
 import com.vale.vic.ui.theme.VicColors
@@ -89,7 +88,7 @@ fun SetupScreen(refreshTick: Int) {
 
         Panel {
             SectionTitle("Device")
-            InfoRow("Build", BuildConfig.VERSION_NAME + " (#" + BuildConfig.VERSION_CODE + ")")
+            InfoRow("App", "VIC")
             InfoRow("Device", Build.MANUFACTURER + " " + Build.MODEL)
             InfoRow("Android", Build.VERSION.RELEASE + " (API " + Build.VERSION.SDK_INT + ")")
         }
