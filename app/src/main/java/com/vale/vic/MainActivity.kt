@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -29,6 +31,7 @@ import com.vale.vic.ai.ChatStore
 import com.vale.vic.automation.service.VicServiceState
 import com.vale.vic.ui.AiSettingsScreen
 import com.vale.vic.ui.ChatScreen
+import com.vale.vic.ui.ObserverScreen
 import com.vale.vic.ui.SetupScreen
 import com.vale.vic.ui.theme.VicColors
 import com.vale.vic.ui.theme.VicTheme
@@ -55,6 +58,7 @@ class MainActivity : ComponentActivity() {
 
 private enum class Screen(val label: String) {
     CHAT("Chat"),
+    OBSERVER("Observer"),
     AI("AI"),
     SETUP("Setup")
 }
@@ -94,6 +98,7 @@ private fun VicApp(refreshTick: Int) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .horizontalScroll(rememberScrollState())
                 .padding(horizontal = 8.dp)
         ) {
             Screen.values().forEach { s ->
@@ -115,6 +120,7 @@ private fun VicApp(refreshTick: Int) {
         ) {
             when (screen) {
                 Screen.CHAT -> ChatScreen()
+                Screen.OBSERVER -> ObserverScreen()
                 Screen.AI -> AiSettingsScreen()
                 Screen.SETUP -> SetupScreen(refreshTick)
             }
