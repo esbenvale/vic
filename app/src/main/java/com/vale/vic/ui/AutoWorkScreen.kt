@@ -76,7 +76,11 @@ fun AutoWorkScreen() {
                 fontSize = 14.sp
             )
             if (ActionExecutor.title.isNotEmpty()) {
-                Text(text = "Task: " + ActionExecutor.title, color = VicColors.TextPrimary, fontSize = 14.sp)
+                Text(
+                    text = "Task: " + ActionExecutor.title,
+                    color = VicColors.TextPrimary,
+                    fontSize = 14.sp
+                )
             }
             ActionExecutor.steps.forEach { s ->
                 Text(
@@ -85,7 +89,11 @@ fun AutoWorkScreen() {
                     fontSize = 13.sp
                 )
                 if (s.message.isNotEmpty()) {
-                    Text(text = "     " + s.message, color = VicColors.TextMuted, fontSize = 12.sp)
+                    Text(
+                        text = "     " + s.message,
+                        color = VicColors.TextMuted,
+                        fontSize = 12.sp
+                    )
                 }
             }
             OutlinedButton(
@@ -100,7 +108,9 @@ fun AutoWorkScreen() {
         Panel {
             SectionTitle("Quick demos")
             Button(
-                onClick = { run("Open Settings and read it", "open Settings\nwait 2\nread", false) },
+                onClick = {
+                    run("Open Settings and read it", "open Settings\nwait 2\nread", false)
+                },
                 enabled = !ActionExecutor.running,
                 modifier = Modifier.fillMaxWidth(),
                 colors = ButtonDefaults.buttonColors(
@@ -168,4 +178,10 @@ fun AutoWorkScreen() {
                 text = "A run stops automatically if you open VIC while it is working. " +
                     "I never type into or tap password fields, and I refuse targets such " +
                     "as pay, buy, send, delete, install and reset until approval support " +
-                    "exists. A floating STOP button and notification are coming next."
+                    "exists. A floating STOP button and notification are coming next.",
+                color = VicColors.TextPrimary,
+                fontSize = 13.sp
+            )
+        }
+    }
+}
