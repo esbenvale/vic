@@ -6,8 +6,15 @@ import android.view.accessibility.AccessibilityEvent
 
 class VicAccessibilityService : AccessibilityService() {
 
+    companion object {
+        /** The connected service, or null when Android has not started it. */
+        @Volatile
+        var instance: VicAccessibilityService? = null
+    }
+
     override fun onServiceConnected() {
         super.onServiceConnected()
+        instance = this
         VicServiceState.connected = true
     }
 
@@ -24,11 +31,13 @@ class VicAccessibilityService : AccessibilityService() {
     }
 
     override fun onUnbind(intent: Intent?): Boolean {
+        instance = null
         VicServiceState.connected = false
         return super.onUnbind(intent)
     }
 
     override fun onDestroy() {
+        instance = null
         VicServiceState.connected = false
         super.onDestroy()
     }
