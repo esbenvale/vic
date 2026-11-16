@@ -30,7 +30,9 @@ import androidx.compose.ui.unit.sp
 import com.vale.vic.ai.ChatStore
 import com.vale.vic.automation.service.VicServiceState
 import com.vale.vic.ui.AiSettingsScreen
+import com.vale.vic.ui.AutoWorkScreen
 import com.vale.vic.ui.ChatScreen
+import com.vale.vic.ui.DeviceScreen
 import com.vale.vic.ui.ObserverScreen
 import com.vale.vic.ui.SetupScreen
 import com.vale.vic.ui.theme.VicColors
@@ -58,6 +60,8 @@ class MainActivity : ComponentActivity() {
 
 private enum class Screen(val label: String) {
     CHAT("Chat"),
+    AUTOWORK("Auto Work"),
+    DEVICE("Device"),
     OBSERVER("Observer"),
     AI("AI"),
     SETUP("Setup")
@@ -120,6 +124,8 @@ private fun VicApp(refreshTick: Int) {
         ) {
             when (screen) {
                 Screen.CHAT -> ChatScreen()
+                Screen.AUTOWORK -> AutoWorkScreen()
+                Screen.DEVICE -> DeviceScreen(refreshTick)
                 Screen.OBSERVER -> ObserverScreen()
                 Screen.AI -> AiSettingsScreen()
                 Screen.SETUP -> SetupScreen(refreshTick)
